@@ -4,9 +4,9 @@ import requests
 import pickle
 import joblib
 import re
-vectorizer = joblib.load('E:\Programming Journey\ML Journey\OCR receipt checker\OCR receipt checker\model\lectorizer.pkl')
-label_encoder = joblib.load('E:\Programming Journey\ML Journey\OCR receipt checker\OCR receipt checker\model\label_encoder.pkl')
-model = joblib.load('E:\Programming Journey\ML Journey\OCR receipt checker\OCR receipt checker\model\model.pkl')
+vectorizer = joblib.load('lectorizer.pkl')
+label_encoder = joblib.load('label_encoder.pkl')
+model = joblib.load('model.pkl')
 
 app = Flask(__name__)
 
