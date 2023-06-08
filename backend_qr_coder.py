@@ -9,7 +9,9 @@ label_encoder = joblib.load('label_encoder.pkl')
 model = joblib.load('model.pkl')
 
 app = Flask(__name__)
-
+@app.route('/')
+def home():
+    return "Backend for golyakoff"
 @app.route('/parse', methods=['POST'])
 def parse_info():
     data = request.get_json()
