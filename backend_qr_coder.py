@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
 from bs4 import BeautifulSoup
 import requests
-import pickle
 import joblib
 import re
+import os
 vectorizer = joblib.load('lectorizer.pkl')
 label_encoder = joblib.load('label_encoder.pkl')
 model = joblib.load('model.pkl')
@@ -52,4 +52,5 @@ def categorize():
     return jsonify(categorized_items)
 
 if __name__ == '__main__':
-    app.run()
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
