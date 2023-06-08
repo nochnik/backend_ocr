@@ -4,9 +4,6 @@ import requests
 import joblib
 import re
 import os
-vectorizer = joblib.load('lectorizer.pkl')
-label_encoder = joblib.load('label_encoder.pkl')
-model = joblib.load('model.pkl')
 
 app = Flask(__name__)
 @app.route('/')
@@ -41,6 +38,10 @@ def categorize():
     categorized_items = []
     for item in data:
         product = item['product']
+        vectorizer = joblib.load('lectorizer.pkl')
+        label_encoder = joblib.load('label_encoder.pkl')
+        model = joblib.load('model.pkl')
+
         item_vec = vectorizer.transform([product])
         category_enc = model.predict(item_vec)
         category = label_encoder.inverse_transform(category_enc)
